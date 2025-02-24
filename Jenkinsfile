@@ -1,13 +1,12 @@
 pipeline {
-    agent any
-    
+    agent {
+        dockerfile true
+    }
+
     stages {
-        stage('Test') {
-            agent {
-                docker { image 'node:16-alpine' }
-            }
+        stage('Cloning Git') {
             steps {
-                sh 'node --version'
+                sh 'echo checking out source code'
             }
         }
     }
