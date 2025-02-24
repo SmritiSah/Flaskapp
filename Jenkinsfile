@@ -1,11 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'alpine' }
+    }
 
     stages {
-        stage('Hello') {
+        stage('Hello from Docker') {
             steps {
-                echo 'Hello, World!'
+                sh 'echo "Hello, World from Docker!"'
             }
         }
     }
 }
+
