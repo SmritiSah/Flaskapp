@@ -1,12 +1,11 @@
 pipeline {
     agent {
-        dockerfile true
+        docker { image 'node:22.14.0-alpine3.21' }
     }
-
     stages {
-        stage('Cloning Git') {
+        stage('Test') {
             steps {
-                sh 'echo checking out source code'
+                sh 'node --eval "console.log(process.platform,process.env.CI)"'
             }
         }
     }
