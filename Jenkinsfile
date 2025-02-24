@@ -1,25 +1,11 @@
 pipeline {
-    agent any
-
+    agent {
+        docker { image 'node:22.14.0-alpine3.21' }
+    }
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying'
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Testing'
-            }
-        }
-        stage('Release') {
-            steps {
-                echo 'Releasing'
+                sh 'node --version'
             }
         }
     }
